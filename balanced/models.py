@@ -8,6 +8,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.model_selection import cross_val_score
 
+# defining function to train,evaluate logistic regression model
 def logistic_regression(x_train,y_train,x_test,y_test):
     logreg = LogisticRegression().fit(x_train, y_train)
     y_pred_train = logreg.predict(x_train)
@@ -20,6 +21,7 @@ def logistic_regression(x_train,y_train,x_test,y_test):
     d={"training_accuracy":accuracy_train,"testing_accuracy":accuracy_test,"classification_report":c_report,"model":logreg,"cross_val_score":cv_mean}
     return d 
 
+# defining function to train,evaluate KNN model
 def knn_classifier(x_train, y_train, x_test, y_test, n_neighbors=5):
     knn = KNeighborsClassifier(n_neighbors=n_neighbors).fit(x_train, y_train)
     y_pred_train = knn.predict(x_train)
@@ -36,7 +38,7 @@ def knn_classifier(x_train, y_train, x_test, y_test, n_neighbors=5):
          "cross_val_score":cv_mean}
     return d
 
-# Decision Tree
+# defining function to train,evaluate decision tree model
 def decision_tree(x_train, y_train, x_test, y_test):
     dt = DecisionTreeClassifier().fit(x_train, y_train)
     y_pred_train = dt.predict(x_train)
@@ -52,7 +54,7 @@ def decision_tree(x_train, y_train, x_test, y_test):
          "model": dt,"cross_val_score":cv_mean}
     return d
 
-# Random Forest
+# defining function to train,evaluate random forest model
 def random_forest(x_train, y_train, x_test, y_test, n_estimators=100):
     rf = RandomForestClassifier(n_estimators=n_estimators, random_state=42).fit(x_train, y_train)
     y_pred_train = rf.predict(x_train)
@@ -69,7 +71,7 @@ def random_forest(x_train, y_train, x_test, y_test, n_estimators=100):
     return d
 
 
-# Support Vector Machine
+ # defining function to train,evaluate SVM model
 def svm_classifier(x_train, y_train, x_test, y_test, kernel='linear'):
     svm = SVC(kernel=kernel).fit(x_train, y_train)
     y_pred_train = svm.predict(x_train)
@@ -85,7 +87,7 @@ def svm_classifier(x_train, y_train, x_test, y_test, kernel='linear'):
          "model": svm,"cross_val_score":cv_mean}
     return d
 
-# Naive Bayes
+# defining function to train,evaluate naive bayes model
 def naive_bayes(x_train, y_train, x_test, y_test):
     nb = GaussianNB().fit(x_train, y_train)
     y_pred_train = nb.predict(x_train)
